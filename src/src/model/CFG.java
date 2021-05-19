@@ -21,7 +21,7 @@ public class CFG {
     private List<Variable> variables;
 
     /**Set of terminals used in the CFG*/
-    private List<String> alphabet;
+    private Alphabet alphabet;
 
     /**Set R of Rewrite Rules*/
     private List<Rule> rules;
@@ -32,16 +32,22 @@ public class CFG {
 
     //Methods
 
-    /**Constructor. Inicializa una instancia de la clase.
-     * @param n Nombre de la GIC a crear. De preferencia de 1 cáracter, pero soporta nombres de mayor extensión.
+    /**Constructor method. Initializes instance and all dependencies.
+     * @param n The name of this CFG
      */
     public CFG(String n){
         name = n;
         variables = new ArrayList<Variable>();
         rules = new ArrayList<Rule>();
+        alphabet = new Alphabet();
     }
 
-
-
+    /**
+     * Adds a new terminal for the CFG alphabet.
+     * @param terminal The terminal to be added in the alphabet
+     */
+    public void addTerminal(String terminal){
+        alphabet.addTerminal(terminal);
+    }
 
 }
