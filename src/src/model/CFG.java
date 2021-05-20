@@ -78,4 +78,12 @@ public class CFG {
         //Trabajen aquí, muchachos.
         return false;
     }
+
+    public ArrayList<Variable> getVariablesOfSimpleProductionRules() {
+        return null;
+    }
+
+    public ArrayList<Variable> getVariablesOfBinaryProductionRules() {
+        return null;
+    }
 }

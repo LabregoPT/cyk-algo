@@ -47,4 +47,12 @@ public class Variable {
     public boolean hasRule(Rule r){
         return rules.contains(r);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Rule> getRules() {
+        return rules;
+    }
 }
