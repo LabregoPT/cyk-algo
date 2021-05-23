@@ -24,9 +24,31 @@ public class CYK {
         int n = w.length();
         x = new String[n][n];
 
+        for (int i = 0; i < x[0].length; i++) {
+            for (int j = 0; j < x[0].length; j++) {
+                x[i][j] = "";
+            }
+        }
+
         initializeMatrix(g, w, n);
         fillMatrix(g, n);
+
+        printMatrix(x);
+
+        System.out.println("last cell: " + x[0][n - 1]);
         return x[0][n - 1].contains("s");//todo: agregar a CFG un atributo con S?
+    }
+
+    /**
+     * Method for debugging.
+     */
+    private static void printMatrix(String[][] x) {
+        for (int i = 0; i < x[0].length; i++) {
+            for (int j = 0; j < x[0].length; j++) {
+                System.out.print(x[i][j] + "|");
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -42,10 +64,11 @@ public class CYK {
             for (Variable variable : simpleProductionVariables
             ) {
                 for (Rule rule : variable.getRules()
-                ) {//todo: generalizarlo y revisar si hace falta filtrar las reglas, pues pueden haber binarias filtradas.
-                    char terminal = rule.getTerminal().toLowerCase().charAt(0);
-                    if (terminal == w.charAt(i)) {
-                        x[i][0] += terminal;
+                ) {//todo: generalizarlo.
+                    if (!rule.isBinary()) {
+                        if (rule.getTerminal().charAt(0) == w.charAt(i)) {
+                            x[i][0] += variable.getName();
+                        }
                     }
                 }
             }
@@ -64,15 +87,18 @@ public class CYK {
             for (int i = 0; i < n - j; i++) {
                 for (int k = 0; k < j - 1; k++) {
                     for (Variable binaryProductionVariables : g.getVariablesOfBinaryProductionRules()
-                    ) {//todo: revisar si hace falta filtrar las reglas, pues pueden haber producciones simples filtradas.
+                    ) {
                         for (Rule rule : binaryProductionVariables.getRules()
                         ) {
-                            String firstVariableOfRule = rule.getFirst().getName().toLowerCase();
-                            if (x[i][k].contains(firstVariableOfRule)) {
-                                String secondVariableOfRule = rule.getSecond().getName().toLowerCase();
-                                if (x[i + k][j - k].contains(secondVariableOfRule)) {
-                                    String variableA = binaryProductionVariables.getName().toLowerCase();
-                                    x[i][j] += variableA;
+                            if (rule.isBinary()) {
+                                String firstVariableOfRule = rule.getFirst().getName();
+                                if (x[i][k].contains(firstVariableOfRule)) {
+                                    String secondVariableOfRule = rule.getSecond().getName();
+                                    System.out.println("n: " + n + ", i+k: " + (i + k) + ", j-k: " + (j - k));
+                                    if (x[i + k][j - k].contains(secondVariableOfRule)) {
+                                        String variableA = binaryProductionVariables.getName();
+                                        x[i][j] += variableA;
+                                    }
                                 }
                             }
                         }

@@ -27,7 +27,7 @@ public class Rule {
      * @param t The terminal used for this Rule.
      */
     public Rule(String t){
-        binary = true;
+        binary = false;
         terminal = t;
     }
 
@@ -37,7 +37,7 @@ public class Rule {
      * @param s Second variable of the binary rule.
      */
     public Rule(Variable f, Variable s){
-        binary = false;
+        binary = true;
         first = f;
         second = s;
     }
@@ -66,6 +66,10 @@ public class Rule {
         return second;
     }
 
+    public boolean isBinary() {
+        return binary;
+    }
+
     /**
      * Determines whether this Rule has a Variable or not.
      * @param r The given Variable to check in this Rule.
@@ -81,6 +85,8 @@ public class Rule {
             ret = -1;
         }
         return ret;
+
+
     }
 
 }

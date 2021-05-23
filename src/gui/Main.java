@@ -10,10 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
         primaryStage.setTitle("Algoritmo CYK");
-        primaryStage.setScene(new Scene(root, 320, 370));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+
     }
 
 
