@@ -7,22 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="359.0" prefWidth="323.0">
          <children>
             <Label layoutX="41.0" layoutY="40.0" text="Introduce las Variables. Separadas por coma." />
             <TextField fx:id="txtFieldVariables" layoutX="28.0" layoutY="75.0" prefHeight="25.0" prefWidth="170.0" promptText="S esta por defecto" />
-            <Button fx:id="butContinuarCadena" disable="true" layoutX="125.0" layoutY="209.0" mnemonicParsing="false" onAction="#continuarCadena" text="Continuar" />
+            <Button fx:id="butContinuarCadena" disable="true" layoutX="124.0" layoutY="227.0" mnemonicParsing="false" onAction="#continuarCadena" text="Continuar" />
             <Button fx:id="butContinueVariables" layoutX="221.0" layoutY="75.0" mnemonicParsing="false" onAction="#getVariables" text="Continuar" />
             <Label layoutX="88.0" layoutY="126.0" text="Introduce las producciones" />
-            <ComboBox fx:id="comboBoxVariable" disable="true" layoutX="12.0" layoutY="165.0" prefHeight="25.0" prefWidth="58.0" />
-            <TextField fx:id="txtFieldProduction" disable="true" layoutX="88.0" layoutY="165.0" prefHeight="25.0" prefWidth="70.0" />
-            <Button fx:id="butAddProduction" disable="true" layoutX="271.0" layoutY="165.0" mnemonicParsing="false" onAction="#addProduction" text="Add" />
-            <Button fx:id="butEvaluar" disable="true" layoutX="134.0" layoutY="302.0" mnemonicParsing="false" onAction="#evaluarCadena" text="Evaluar" />
-            <TextField fx:id="txtCadena" disable="true" layoutX="51.0" layoutY="259.0" prefHeight="25.0" prefWidth="217.0" />
-            <ComboBox fx:id="comboBoxTipoRegla" disable="true" layoutX="172.0" layoutY="165.0" prefHeight="25.0" prefWidth="84.0" />
+            <ComboBox fx:id="comboBoxVariable" disable="true" layoutX="11.0" layoutY="183.0" prefHeight="25.0" prefWidth="58.0" />
+            <TextField fx:id="txtFieldProduction" disable="true" layoutX="87.0" layoutY="183.0" prefHeight="25.0" prefWidth="70.0" />
+            <Button fx:id="butAddProduction" disable="true" layoutX="270.0" layoutY="183.0" mnemonicParsing="false" onAction="#addProduction" text="Add" />
+            <Button fx:id="butEvaluar" disable="true" layoutX="133.0" layoutY="320.0" mnemonicParsing="false" onAction="#evaluarCadena" text="Evaluar" />
+            <TextField fx:id="txtCadena" disable="true" layoutX="50.0" layoutY="277.0" prefHeight="25.0" prefWidth="217.0" />
+            <ComboBox fx:id="comboBoxTipoRegla" disable="true" layoutX="171.0" layoutY="183.0" prefHeight="25.0" prefWidth="84.0" />
+            <Label layoutX="79.0" layoutY="151.0" text="Si es binaria separar por coma" />
          </children>
       </AnchorPane>
    </children>

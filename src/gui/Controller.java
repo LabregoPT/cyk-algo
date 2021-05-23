@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import model.RuleType;
 
 public class Controller {
 
@@ -52,6 +53,24 @@ public class Controller {
 
     @FXML
     void getVariables(ActionEvent event) {
+
+        //traer información
+        txtFieldVariables.setDisable(true);
+        txtFieldVariables.setText("S," + txtFieldVariables.getText());
+        String[] variables = txtFieldVariables.getText().split(",");
+        butContinueVariables.setDisable(true);
+
+        //asignar los datos recogidos al modelo
+
+        //activar lo siguiente
+        comboBoxVariable.setDisable(false);
+        txtFieldProduction.setDisable(false);
+        comboBoxTipoRegla.setDisable(false);
+        butAddProduction.setDisable(false);
+        butContinuarCadena.setDisable(false);
+
+        //asignar los valores a los combobox
+        comboBoxTipoRegla.getItems().add(RuleType.Simple.toString());
 
     }
 }
