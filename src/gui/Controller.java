@@ -94,7 +94,10 @@ public class Controller {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     *
+     */
+    public void test() {
         //Debugging area for the CYK algorithm.
         CFG testG = new CFG("Test G");
         Variable s = new Variable("S",true);
@@ -120,7 +123,9 @@ public class Controller {
         testG.getVariablesOfBinaryProductionRules().add(c);
 
 //        System.out.println(testG.getVariablesOfSimpleProductionRules().size());
-        System.out.println(CYK.belongsToCFG(testG,"bbab"));
+//        System.out.println(CYK.belongsToCFG(testG,"bbab"));
+//        System.out.println(CYK.belongsToCFG(testG,"baaba"));
+        System.out.println(CYK.belongsToCFG(testG,"aaba"));
     }
 
     @FXML

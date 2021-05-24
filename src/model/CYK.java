@@ -36,7 +36,7 @@ public class CYK {
         printMatrix(x);
 
         System.out.println("last cell: " + x[0][n - 1]);
-        return x[0][n - 1].contains("s");//todo: agregar a CFG un atributo con S?
+        return x[0][n - 1].contains("S");//todo: agregar a CFG un atributo con S?
     }
 
     /**
@@ -83,27 +83,31 @@ public class CYK {
      * @param g
      */
     private static void fillMatrix(CFG g, int n) {
-        for (int j = 1; j < n; j++) { // Each column.
-            for (int i = 0; i < n - j; i++) {
-                for (int k = 0; k < j - 1; k++) {
+        for (int j = 2; j <= n; j++) { // Each column.
+            for (int i = 1; i <= n - j + 1; i++) {
+                int k = 1;
+                do {
                     for (Variable binaryProductionVariables : g.getVariablesOfBinaryProductionRules()
                     ) {
                         for (Rule rule : binaryProductionVariables.getRules()
                         ) {
                             if (rule.isBinary()) {
                                 String firstVariableOfRule = rule.getFirst().getName();
-                                if (x[i][k].contains(firstVariableOfRule)) {
+                                if (x[i - 1][k - 1].contains(firstVariableOfRule)) {
                                     String secondVariableOfRule = rule.getSecond().getName();
                                     System.out.println("n: " + n + ", i+k: " + (i + k) + ", j-k: " + (j - k));
-                                    if (x[i + k][j - k].contains(secondVariableOfRule)) {
+                                    if (x[i + k - 1][j - k - 1].contains(secondVariableOfRule)) {
                                         String variableA = binaryProductionVariables.getName();
-                                        x[i][j] += variableA;
+                                        if (!x[i - 1][j - 1].contains(variableA)) {
+                                            x[i - 1][j - 1] += variableA;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
+                    k++;
+                } while (k <= j - 1);
             }
         }
     }
