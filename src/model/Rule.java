@@ -66,6 +66,10 @@ public class Rule {
         return second;
     }
 
+    /**
+     * Returns whether or not this Rule is a binary rule.
+     * @return True if this variable is binary. False otherwise.
+     */
     public boolean isBinary() {
         return binary;
     }

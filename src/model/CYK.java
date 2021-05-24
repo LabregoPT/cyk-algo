@@ -60,7 +60,8 @@ public class CYK {
      */
     private static void initializeMatrix(CFG g, String w, int n) {
         for (int i = 0; i < n; i++) {
-            ArrayList<Variable> simpleProductionVariables = g.getVariablesOfSimpleProductionRules();
+            ArrayList<Variable> simpleProductionVariables = new ArrayList<>();
+            simpleProductionVariables.addAll(g.getVariablesOfSimpleProductionRules());
             for (Variable variable : simpleProductionVariables
             ) {
                 for (Rule rule : variable.getRules()

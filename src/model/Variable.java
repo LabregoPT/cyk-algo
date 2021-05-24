@@ -48,11 +48,41 @@ public class Variable {
         return rules.contains(r);
     }
 
+    /**
+     * Returns the name of this Variable
+     * @return The name of the Variable
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns a List containing the rules used in this production.
+     * @return A List of Rule objects corresponding to the production rules of this Variable.
+     */
     public List<Rule> getRules() {
         return rules;
+    }
+
+    public boolean hasSimpleRule(){
+        boolean ret = false;
+        for(Rule r : rules){
+            if(!r.isBinary()){
+                ret = true;
+                break;
+            }
+        }
+        return ret;
+    }
+
+    public boolean hasBinaryRule(){
+        boolean ret = false;
+        for(Rule r : rules){
+            if(r.isBinary()){
+                ret = true;
+                break;
+            }
+        }
+        return ret;
     }
 }
