@@ -43,12 +43,12 @@ public class CFG {
     /**
      * Array that holds all variables that have at least one simple production rule.
      */
-    private ArrayList<Variable> simpleProductionVariables = new ArrayList<>();
+    private List<Variable> simpleProductionVariables = new ArrayList<>();
 
     /**
      * Array that holds all variables that have at least one binary production rule.
      */
-    private ArrayList<Variable> binaryProductionVariables = new ArrayList<>();
+    private List<Variable> binaryProductionVariables = new ArrayList<>();
 
 
     //Methods
@@ -94,14 +94,39 @@ public class CFG {
         rules.add(r);
     }
 
-    public ArrayList<Variable> getVariablesOfSimpleProductionRules() {
-        return simpleProductionVariables;
+    /**
+     * Returns all Variables in the CFG that have at least one Simple Production Rule.
+     * @return a List of all Variables containing at least one Simple Production Rule.
+     */
+    public List<Variable> getVariablesOfSimpleProductionRules() {
+        ArrayList<Variable> ret = new ArrayList<>();
+        for(Variable v : variables){
+            if(v.hasSimpleRule()){
+                ret.add(v);
+            }
+        }
+        return ret;
     }
 
-    public ArrayList<Variable> getVariablesOfBinaryProductionRules() {
-        return binaryProductionVariables;
+    /**
+     * Returns a list of all Variables that have at least one Binary Production Rule.
+     * @return a List of all Variables containing at least one Binary Production Rule.
+     */
+    public List<Variable> getVariablesOfBinaryProductionRules() {
+        ArrayList<Variable> ret = new ArrayList<>();
+        for(Variable v : variables){
+            if(v.hasBinaryRule()){
+                ret.add(v);
+            }
+        }
+        return ret;
     }
 
+    /**
+     * Returns a Variable given its name, or null if the Variable is not found in this CFG.
+     * @param name the name of the variable to be searched in this CFG
+     * @return A Variable instance corresponding to the first found with the name given, or null if none are found.
+     */
     public Variable getVariableByName(String name) {
         Variable answer = null;
         for (Variable variable : variables
