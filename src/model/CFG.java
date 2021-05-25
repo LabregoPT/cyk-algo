@@ -99,13 +99,14 @@ public class CFG {
      * @return a List of all Variables containing at least one Simple Production Rule.
      */
     public List<Variable> getVariablesOfSimpleProductionRules() {
-        ArrayList<Variable> ret = new ArrayList<>();
-        for(Variable v : variables){
-            if(v.hasSimpleRule()){
-                ret.add(v);
-            }
-        }
-        return ret;
+//        ArrayList<Variable> ret = new ArrayList<>();
+//        for(Variable v : variables){
+//            if(v.hasSimpleRule()){
+//                ret.add(v);
+//            }
+//        }
+//        return ret;
+        return simpleProductionVariables;
     }
 
     /**
@@ -113,13 +114,14 @@ public class CFG {
      * @return a List of all Variables containing at least one Binary Production Rule.
      */
     public List<Variable> getVariablesOfBinaryProductionRules() {
-        ArrayList<Variable> ret = new ArrayList<>();
-        for(Variable v : variables){
-            if(v.hasBinaryRule()){
-                ret.add(v);
-            }
-        }
-        return ret;
+//        ArrayList<Variable> ret = new ArrayList<>();
+//        for(Variable v : variables){
+//            if(v.hasBinaryRule()){
+//                ret.add(v);
+//            }
+//            }
+//        return ret;
+        return binaryProductionVariables;
     }
 
     /**

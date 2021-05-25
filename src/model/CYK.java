@@ -49,7 +49,7 @@ public class CYK {
         // Work is relegated to two methods: one for initialization and the other for matrix filling.
         initializeMatrix(g, w, n);
         fillMatrix(g, n);
-
+//        printMatrix();
         return x[0][n - 1].contains("S");
     }
 
@@ -77,6 +77,16 @@ public class CYK {
             }
         }
     }
+
+//    private static void printMatrix(){
+//        int n = x[0].length;
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                System.out.print(x[i][j]+"|");
+//            }
+//            System.out.println();
+//        }
+//    }
 
     /**
      * Concatenates to each cell in x the name of every variable A in G
