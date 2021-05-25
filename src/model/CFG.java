@@ -16,7 +16,7 @@ public class CFG {
     //Attributes
 
     /**
-     * Preferable a single character name, but supports name longer than that.
+     * Preferable a single character name, but supports names longer than that.
      */
     private String name;
 
