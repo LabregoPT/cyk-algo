@@ -44,8 +44,13 @@ public class Controller {
     @FXML
     private Label resultLabel;
 
+    /**
+     * guarda una producción
+     * @param event
+     */
     @FXML
     void addProduction(ActionEvent event) {
+        // toma los datos de la producción de la gui
         String textProduction = txtFieldProduction.getText();
         txtFieldProduction.setText("");
         String initialVariable = choiceBoxVariable.getValue();
@@ -54,12 +59,12 @@ public class Controller {
             initialVariable_ = g.getVariableByName(initialVariable);
             Rule newRule;
             switch (choiceBoxTipoRegla.getValue()) {
-                case ("Simple"):
+                case ("Simple"):  // caso para guardar producciones simples
                     newRule = new Rule(textProduction);
                     initialVariable_.addRule(newRule);
                     g.getVariablesOfSimpleProductionRules().add(initialVariable_);
                     break;
-                case ("Binaria"):
+                case ("Binaria"):  // caso para guardar producciones binarias
                     newRule = new Rule(g.getVariableByName(textProduction.substring(0,1)),g.getVariableByName(textProduction.substring(1,2)));
                     initialVariable_.addRule(newRule);
                     g.getVariablesOfBinaryProductionRules().add(initialVariable_);
@@ -71,10 +76,17 @@ public class Controller {
 
     }
 
+    /**
+     * desabilita ingreso de datos de producciones y activar la cadena para evaluar
+     * @param event
+     */
     @FXML
     void continuarCadena(ActionEvent event) {
+
+        //habilita el apartado para ingresar la cadena
         txtCadena.setDisable(false);
         butEvaluar.setDisable(false);
+        //desabilita el apartado de ingreso de datos de producción
         choiceBoxVariable.setDisable(true);
         choiceBoxTipoRegla.setDisable(true);
         txtFieldProduction.setDisable(true);
@@ -128,6 +140,10 @@ public class Controller {
         System.out.println(CYK.belongsToCFG(testG,"aaba"));
     }
 
+    /**
+     * evalua la cadena usando el algortmo den modelo
+     * @param event
+     */
     @FXML
     void evaluarCadena(ActionEvent event) {
         resultLabel.setVisible(true);
@@ -139,6 +155,10 @@ public class Controller {
         }
     }
 
+    /**
+     * toma las variables ingresadas por el usuario
+     * @param event
+     */
     @FXML
     void getVariables(ActionEvent event) {
         //traer información
@@ -154,7 +174,7 @@ public class Controller {
             g.addVariable(variableToAdd);
         }
 
-        //activar lo siguiente
+        //activar ingreso de producciones
         choiceBoxVariable.setDisable(false);
         txtFieldProduction.setDisable(false);
         choiceBoxTipoRegla.setDisable(false);
